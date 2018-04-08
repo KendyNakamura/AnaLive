@@ -1,8 +1,22 @@
 inherit_from: .rubocop_todo.yml
 
+Rails:
+  Enabled: true
+
 AllCops:
+  # Rubyのバージョンを指定
+  TargetRubyVersion: 2.4.1
+  # 除外するファイル
   Exclude:
+    - vendor/bundle/**/*
+    - bin/*
     - db/**/*
+    - config/**/*
+    - Gemfile
+
+# Missing magic comment # frozen_string_literal: true. を無視
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 # classやmoduleの先頭コメント
 Documentation:

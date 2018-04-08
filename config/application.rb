@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative 'boot'
 
 require "rails"
@@ -33,8 +34,8 @@ module Analive
     config.generators do |g|
       g.skip_routes true
       g.stylesheets false
-      g.javascript false
+      g.javascripts false
       g.helper false
-    end 
+    end
   end
 end
