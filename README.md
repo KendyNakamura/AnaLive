@@ -5,7 +5,12 @@ application up and running.
 
 Things you may want to cover:
 
+* title
+- analive
+
 * Ruby version
+- ruby 2.4.3p205
+- rails 5.1.3
 
 * System dependencies
 
