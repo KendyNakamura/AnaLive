@@ -29,5 +29,12 @@ module Analive
     config.generators.system_tests = nil
 
     config.read_encrypted_secrets = true
+
+    config.generators do |g|
+      g.skip_routes true
+      g.stylesheets false
+      g.javascript false
+      g.helper false
+    end 
   end
 end
