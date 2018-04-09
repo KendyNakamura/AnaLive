@@ -5,14 +5,18 @@ Rails:
 
 AllCops:
   # Rubyのバージョンを指定
-  TargetRubyVersion: 2.4.1
+  TargetRubyVersion: 2.4.3
   # 除外するファイル
   Exclude:
-    - vendor/bundle/**/*
-    - bin/*
-    - db/**/*
-    - config/**/*
-    - Gemfile
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'Gemfile'
+    - 'public/**/*'
+    - 'tmp/**/*'
+    - 'log/**/*'
+
 
 # Missing magic comment # frozen_string_literal: true. を無視
 Style/FrozenStringLiteralComment:

@@ -24,6 +24,9 @@ gem 'popper_js'
 gem 'tether-rails'
 
 gem 'devise'
+gem 'sidekiq'
+gem 'sinatra'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

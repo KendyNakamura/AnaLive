@@ -37,5 +37,8 @@ module Analive
       g.javascripts false
       g.helper false
     end
+
+    #sidekiq
+    config.active_job.queue_adapter = :sidekiq
   end
 end
