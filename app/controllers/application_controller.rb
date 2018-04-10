@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  rescue_from SecurityError do |exception|
+  rescue_from SecurityError do
     redirect_to root_url, notice: 'admin画面へのアクセス権限がありません'
   end
 
