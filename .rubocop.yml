@@ -4,7 +4,7 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   Exclude:
     - 'vendor/**/*' # rubocop config/default.yml
-    - 'db/seeds/**/*'
+    - 'db/**/*'
     - 'config/initializers/devise.rb'
 
 # Missing magic comment # frozen_string_literal: true. を無視

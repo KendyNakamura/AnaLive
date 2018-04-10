@@ -27,6 +27,7 @@
 #  avatar_content_type    :string(255)
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
+#  role                   :integer          default(0), not null
 #
 
 class User < ApplicationRecord
@@ -52,7 +53,11 @@ class User < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
-  paginates_per 5 
+  # users per page
+  paginates_per 5
+
+  # add role
+  enum role: { user: 0, admin: 1 }
 
   # def login=(login)
   #   @login = login
