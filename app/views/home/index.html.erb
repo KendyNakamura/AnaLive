@@ -1,13 +1,17 @@
-<h1>Hello</h1>
-
-<div class="col-md-3">
-  <div class="card p-2">
-    <%= image_tag current_user.avatar.url, class: "card-img-top rouded-circle" %>
-    <div class="card-body">
-      <h4 class="card-title"><%= "#{current_user.name}" %></h4>
-      <p class="card-text">
-        <span class="text-secondary">ここにユーザ情報が入ります。</span>
-      </p>
+<div class="row">
+  <div class="col-md-3 col-12 d-none d-md-block">
+    <div class="card p-2">
+      <%= image_tag current_user.avatar.url, class: "card-img-top rouded-circle" %>
+      <div class="card-body">
+        <h4 class="card-title"><%= "#{@user.name}" %></h4>
+        <p class="card-text">
+          <span class="text-secondary">ここにユーザ情報が入ります。</span>
+        </p>
+      </div>
     </div>
+  </div>
+
+  <div class="col-md-9 col-12">
+    <%= render partial: "users", locals: { users: @users } %>
   </div>
 </div>
