@@ -16,11 +16,9 @@
 # Uncomment the following lines to make the configuration take effect.
 
 PreCommit:
+
  RuboCop:
    enabled: true
- AuthorName:
-   enabled: false
-
 
 CommitMsg:
   CapitalizedSubject:

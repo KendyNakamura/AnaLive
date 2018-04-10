@@ -1,22 +1,10 @@
 inherit_from: .rubocop_todo.yml
 
-Rails:
-  Enabled: true
-
+# 自動生成されるものはチェック対象から除外する
 AllCops:
-  # Rubyのバージョンを指定
-  TargetRubyVersion: 2.4.3
-  # 除外するファイル
   Exclude:
-    - 'vendor/**/*'
-    - 'bin/*'
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'Gemfile'
-    - 'public/**/*'
-    - 'tmp/**/*'
-    - 'log/**/*'
-
+    - 'vendor/**/*' # rubocop config/default.yml
+    - 'config/initializers/devise.rb'
 
 # Missing magic comment # frozen_string_literal: true. を無視
 Style/FrozenStringLiteralComment:
@@ -37,9 +25,11 @@ Metrics/BlockLength:
     - config/**/*
 
 #snake_caseの除外
+#**/Gemfileだとredisだけ除外できなかったからフルパス指定
 FileName:
   Exclude:
     - '/Users/nakamurakenji/ruby/analive/vendor/bundle/ruby/2.4.0/gems/redis-4.0.1/.travis/Gemfile'
+    - 'Gemfile'
 
 #nestスタイルの無効化
 Style/ClassAndModuleChildren:
