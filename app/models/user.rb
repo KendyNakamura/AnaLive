@@ -40,7 +40,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
-         
+
   has_attached_file :avatar,
                     styles: { medium: '300x300>', thumb: '100x100>' },
                     default_url: '/english.jpg'
@@ -51,6 +51,8 @@ class User < ApplicationRecord
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
+
+  paginates_per 5 
 
   # def login=(login)
   #   @login = login
