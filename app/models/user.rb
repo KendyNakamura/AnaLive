@@ -22,9 +22,15 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string(255)
 #
 
 class User < ApplicationRecord
+  # attr_accessor :login
+  validates :name,
+            presence: true,
+            uniqueness: { case_sensitive: false }
+  # validate :validate_name
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -34,4 +40,27 @@ class User < ApplicationRecord
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
+
+  # def login=(login)
+  #   @login = login
+  # end
+  #
+  # def login
+  #   @login || self.name || self.email
+  # end
+  #
+  # def validate_name
+  #   errors.add(:name, :invalid) if User.where(email:name).exists?
+  # end
+  #
+  # def self.find_for_database_authentication(warden_conditions)
+  #   conditions = warden_conditions.dup
+  #   conditions[:email].downcase! if conditions[:email]
+  #   login = conditions.delete(:login)
+  #
+  #   where(conditions.to_hash).where(
+  #     ["lower(name) = :value OR lower(email) = :value",
+  #     { value: login.downcase }]
+  #   ).first
+  # end
 end
