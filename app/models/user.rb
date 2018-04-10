@@ -46,15 +46,14 @@ class User < ApplicationRecord
                     styles: { medium: '300x300>', thumb: '100x100>' },
                     default_url: '/english.jpg'
 
-  validates_attachment_content_type :avatar,
-                                    content_type: %r{\Aimage\/.*Yz}
+  validates_attachment :avatar, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
   # users per page
-  paginates_per 5
+  paginates_per 10
 
   # add role
   enum role: { user: 0, admin: 1 }
