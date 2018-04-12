@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/sign_out' => 'devise/sessions#destroy'
   end
-  mount Sidekiq::Web, at: '/sidekiq'
+  authenticate :user, ->(u) { u.admin? } do
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
 end

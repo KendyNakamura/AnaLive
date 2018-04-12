@@ -283,5 +283,5 @@ Devise.setup do |config|
 
   config.secret_key = Rails.application.secrets.SECRET_TOKEN
 
-  config.authentication_keys = [:login]
+  # config.authentication_keys = [:login]
 end

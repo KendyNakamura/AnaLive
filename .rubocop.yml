@@ -6,6 +6,7 @@ AllCops:
     - 'vendor/**/*' # rubocop config/default.yml
     - 'db/**/*'
     - 'config/initializers/devise.rb'
+    - 'app/admin/dashboard.rb'
 
 # Missing magic comment # frozen_string_literal: true. を無視
 Style/FrozenStringLiteralComment:
