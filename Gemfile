@@ -52,4 +52,11 @@ group :development do
   gem 'rubocop'
   gem 'annotate'
   gem 'overcommit'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-nginx'
+  gem 'capistrano-sidekiq'
 end
