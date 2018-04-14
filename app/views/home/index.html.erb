@@ -12,9 +12,14 @@
     </div>
   </div>
 
-  <div class="col-sm-7">
-    <%= render partial: "users", locals: { users: @users } %>
+  <div class="col-sm-4">
+    <%= render partial: "users", collection: @users %>
   </div>
+
+  <div class="col-sm-3">
+    <%= render partial: "post", collection: @posts %>
+  </div>
+
 </div>
 
 <%= paginate @users %>
