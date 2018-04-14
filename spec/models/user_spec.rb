@@ -27,7 +27,8 @@
 #  avatar_content_type    :string(255)
 #  avatar_file_size       :integer
 #  avatar_updated_at      :datetime
-#  role                   :integer          default(0), not null
+#  role                   :integer          default("user"), not null
+#  movie_id               :string(255)
 #
 
 require 'rails_helper'
