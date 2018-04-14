@@ -12,4 +12,17 @@ module ApplicationHelper
       concat h(message)
     end
   end
+
+  def movie(opts)
+    iframe = content_tag(
+      :iframe,
+      '', # empty body
+      # width: 100,
+      # height: 315,
+      src: "https://www.youtube.com/embed/#{opts[:movie_id]}",
+      frameborder: 0,
+      allowfullscreen: true
+    )
+    content_tag(:div, iframe, class: 'youtube-container')
+  end
 end

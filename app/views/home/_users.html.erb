@@ -1,9 +1,9 @@
 <div class="border border-left-0 border-right-0 border-bottom-0 py-3 row">
     <% users.each do |user| %>
-      <div class="col-2 px-3">
+      <div class="col-3 px-3">
         <%= image_tag user.avatar, class: "border rouded-circle w-100" %>
       </div>
-      <div class="col-10 px-3">
+      <div class="col-9 px-3 py-3 ">
         <p class="my-1">
           <strong><%= "#{user.name}" %></strong>
         </p>
