@@ -7,7 +7,7 @@
         <p class="card-text">
           <span class="text-secondary">ここにユーザ情報が入ります。</span>
         </p>
-        <%= movie(movie_id: 'h-5vS8F7VtE') %>
+        <%= movie(movie_id: @user.movie_id.match(/watch\?v=/).post_match) %>
       </div>
     </div>
   </div>
