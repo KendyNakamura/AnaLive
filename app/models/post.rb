@@ -11,4 +11,7 @@
 
 class Post < ApplicationRecord
   belongs_to :user, inverse_of: :posts
+
+  # posts per page
+  paginates_per 10
 end

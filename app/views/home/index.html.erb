@@ -24,15 +24,13 @@
       </div>
     <% end %>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-8">
           <%= render partial: "post", collection: @posts %>
+          <%= paginate @posts %>
         </div>
-
-        <div class="col-sm-6">
+        <div class="d-none d-md-block col-sm-3">
           <%= render partial: "users", collection: @users %>
         </div>
       </div>
   </div>
 </div>
-
-<%= paginate @users %>

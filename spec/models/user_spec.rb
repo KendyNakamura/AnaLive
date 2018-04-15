@@ -29,6 +29,7 @@
 #  avatar_updated_at      :datetime
 #  role                   :integer          default("user"), not null
 #  movie_id               :string(255)
+#  content                :string(255)
 #
 
 require 'rails_helper'

@@ -29,12 +29,13 @@
 #  avatar_updated_at      :datetime
 #  role                   :integer          default("user"), not null
 #  movie_id               :string(255)
+#  content                :string(255)
 #
 
 class User < ApplicationRecord
   has_many :posts, inverse_of: :user
   attr_accessor :current_password
-  
+
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false }
@@ -55,8 +56,8 @@ class User < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
-  # users per page
-  paginates_per 10
+  # # users per page
+  # paginates_per 10
 
   # add role
   enum role: { user: 0, admin: 1 }
