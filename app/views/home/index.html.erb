@@ -1,5 +1,6 @@
 <div class="row">
-  <div class="col-sm-4 d-md-block">
+  <!-- プロフィール -->
+  <div class="col-sm-4 d-none d-sm-inline">
     <div class="card p-2">
       <%= image_tag current_user.avatar.url, class: "card-img-top rouded-circle" %>
       <div class="card-body">
@@ -12,14 +13,26 @@
     </div>
   </div>
 
-  <div class="col-sm-4">
-    <%= render partial: "post", collection: @posts %>
-  </div>
+  <div class="col-sm-8">
+    <%= form_for @post do |f| %>
+      <div class="input-group pb-4 mx-0">
+        <%= f.text_field :body, class: "form-control" ,placeholder: "おすすめの動画を投稿しよう"%>
 
-  <div class="col-sm-4">
-    <%= render partial: "users", collection: @users %>
-  </div>
+        <span class="input-group-btn">
+          <%= f.submit "投稿する", class: "btn btn-primary"%>
+        </span>
+      </div>
+    <% end %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= render partial: "post", collection: @posts %>
+        </div>
 
+        <div class="col-sm-6">
+          <%= render partial: "users", collection: @users %>
+        </div>
+      </div>
+  </div>
 </div>
 
 <%= paginate @users %>

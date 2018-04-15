@@ -33,7 +33,8 @@
 
 class User < ApplicationRecord
   has_many :posts, inverse_of: :user
-  # attr_accessor :login
+  attr_accessor :current_password
+  
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false }

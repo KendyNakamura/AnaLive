@@ -3,5 +3,6 @@ class HomeController < ApplicationController
     @users = User.all.page(params[:page])
     @user = current_user
     @posts = Post.order('created_at desc')
+    @post = Post.new
   end
 end
