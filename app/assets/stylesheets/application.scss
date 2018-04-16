@@ -8,3 +8,9 @@
   width: 100%;
   height: 260px;
 }
+
+@media screen and ( max-width:479px ){
+.alert{
+  font-size: 12px;
+}
+}

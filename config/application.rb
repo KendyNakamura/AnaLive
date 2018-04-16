@@ -40,5 +40,8 @@ module Analive
 
     #sidekiq
     config.active_job.queue_adapter = :sidekiq
+
+    #devise locals ja
+    config.i18n.default_locale = :ja
   end
 end

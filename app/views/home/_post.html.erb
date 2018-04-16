@@ -4,8 +4,8 @@
   </div>
   <div class="col-9 px-3 py-3 ">
     <p class="my-1">
-      <strong><%= "#{post.user.name}" %></strong>
-      <span class="text-secondary"><%= time_ago_in_words(post.created_at) %></span>
+      <h4 class="text-primary"><%= "#{post.user.name}" %></h4>
+      <span class="text-secondary float-right"><%= time_ago_in_words(post.created_at) %></span>
     </p>
     <%= post.body %>
   </div>
