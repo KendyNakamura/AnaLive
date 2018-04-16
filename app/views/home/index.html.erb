@@ -1,6 +1,6 @@
 <div class="row">
   <!-- プロフィール -->
-  <div class="col-sm-4 d-none d-sm-inline">
+  <div class="col-md-4 d-none d-sm-inline">
     <div class="card p-2">
       <%= image_tag current_user.avatar.url, class: "card-img-top rouded-circle" %>
       <div class="card-body">
@@ -13,10 +13,14 @@
     </div>
   </div>
 
-  <div class="col-sm-8">
+  <div class="col-md-8">
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
     <%= form_for @post do |f| %>
       <div class="input-group pb-4 mx-0">
         <%= f.text_field :body, class: "form-control" ,placeholder: "おすすめの動画を投稿しよう"%>
+        <%= f.text_field :movie_id, class: "form-control col-md-5 col-sm", placeholder: "YoutubeのURLを入力しよう。" %>
 
         <span class="input-group-btn">
           <%= f.submit "投稿する", class: "btn btn-primary"%>
@@ -24,11 +28,11 @@
       </div>
     <% end %>
       <div class="row">
-        <div class="col-sm-8">
+        <div class="col-lg-8">
           <%= render partial: "post", collection: @posts %>
           <%= paginate @posts %>
         </div>
-        <div class="d-none d-md-block col-sm-3">
+        <div class="d-none d-md-block col-lg-3">
           <%= render partial: "users", collection: @users %>
         </div>
       </div>

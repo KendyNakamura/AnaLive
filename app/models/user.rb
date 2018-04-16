@@ -39,9 +39,7 @@ class User < ApplicationRecord
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false }
-  # validate :validate_name
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
@@ -56,32 +54,6 @@ class User < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
-  # # users per page
-  # paginates_per 10
-
   # add role
   enum role: { user: 0, admin: 1 }
-
-  # def login=(login)
-  #   @login = login
-  # end
-  #
-  # def login
-  #   @login || self.name || self.email
-  # end
-  #
-  # def validate_name
-  #   errors.add(:name, :invalid) if User.where(email:name).exists?
-  # end
-  #
-  # def self.find_for_database_authentication(warden_conditions)
-  #   conditions = warden_conditions.dup
-  #   conditions[:email].downcase! if conditions[:email]
-  #   login = conditions.delete(:login)
-  #
-  #   where(conditions.to_hash).where(
-  #     ["lower(name) = :value OR lower(email) = :value",
-  #     { value: login.downcase }]
-  #   ).first
-  # end
 end
