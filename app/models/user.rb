@@ -56,4 +56,12 @@ class User < ApplicationRecord
 
   # add role
   enum role: { user: 0, admin: 1 }
+
+  def movie_url
+    if movie_id.match(%r{/watch\?v=}).present?
+      movie_id.match(%r{/watch\?v=}).post_match
+    elsif movie_id.match(%r{^https:\/\/youtu.be/}).present?
+      movie_id.match(%r{^https:\/\/youtu.be/}).post_match
+    end
+  end
 end
