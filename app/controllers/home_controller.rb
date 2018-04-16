@@ -5,4 +5,8 @@ class HomeController < ApplicationController
     @posts = Post.order('created_at desc').page(params[:page])
     @post = Post.new
   end
+
+  def users
+    @users = User.all
+  end
 end

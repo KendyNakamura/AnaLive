@@ -8,9 +8,10 @@
       <span class="text-secondary"><%= time_ago_in_words(post.created_at) %></span>
     </p>
     <%= post.body %>
-    <% if post.movie_id.present? %>
-      <!-- movieヘルパーを使用 -->
-      <%= movie(movie_id: post.movie_url) %>
-    <% end %>
   </div>
+
 </div>
+<% if post.movie_id.present? %>
+  <!-- movieヘルパーを使用 -->
+  <%= movie(movie_id: post.movie_url) %>
+<% end %>

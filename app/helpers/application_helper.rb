@@ -1,5 +1,5 @@
 module ApplicationHelper
-  APP_NAME = 'AnaLive'.freeze
+  APP_NAME = 'AnaTube'.freeze
   def page_title
     base_title = APP_NAME
     return base_title if @title.blank?
