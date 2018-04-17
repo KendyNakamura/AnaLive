@@ -1,15 +1,15 @@
-<h2>Forgot your password?</h2>
+<h2>パスワードの再設定</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-5 col-sm", placeholder: "Enter email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-5 col-sm", placeholder: "メールアドレスを入力してください" %>
   </div>
 
   <div class="actions pb-5">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "パスワードを再設定する", class: "btn btn-secondary" %>
   </div>
 <% end %>
 

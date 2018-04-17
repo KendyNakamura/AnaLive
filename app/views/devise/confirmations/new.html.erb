@@ -1,15 +1,15 @@
-<h2>Resend confirmation instructions</h2>
+<h2>確認メールの再送信</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="form_group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control col-md-5 col-sm", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
   <div class="actions pb-5">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "確認メールを再送信する", class: "btn btn-secondary my-3" %>
   </div>
 <% end %>
 
