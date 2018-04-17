@@ -49,7 +49,6 @@ class User < ApplicationRecord
                     s3_credentials: "#{Rails.root}/config/s3.yml",
                     path: ':attachment/:id/:style.:extension',
                     styles: { medium: '300x300!', thumb: '100x100!>' },
-                    path: ':attachment/:id/:style.:extension',
                     default_url: '/english.jpg'
 
   validates_attachment :avatar, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
