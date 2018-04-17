@@ -44,26 +44,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
-  # has_attached_file :avatar,
-  #                   styles: { medium: '300x300>', thumb: '100x100>' },
-  #                   path:":attachment/:id/:style.:extension",
-  #                   default_url: '/english.jpg'
-
-  if Rails.env.production?
-    has_attached_file :avatar,
-                      storage: :s3,
-                      s3_credentials: {
-                        access_key_id: Rails.application.secrets.AWS_ACCESS_KEY_ID,
-                        secrets_access_key: Rails.application.secrets.AWS_SECRET_ACCESS_KEY
-                      },
-                      styles: { medium: '300x300!', thumb: '100x100!>' },
-                      path: ':attachment/:id/:style.:extension',
-                      default_url: '/english.jpg'
-  else
-    has_attached_file :avatar,
-                      styles: { medium: '300x300!', thumb: '100x100!>' },
-                      default_url: '/english.jpg'
-  end
+  has_attached_file :avatar,
+                    storage: :s3,
+                    s3_credentials: "#{Rails.root}/config/s3.yml",
+                    path: ':attachment/:id/:style.:extension',
+                    styles: { medium: '300x300!', thumb: '100x100!>' },
+                    path: ':attachment/:id/:style.:extension',
+                    default_url: '/english.jpg'
 
   validates_attachment :avatar, content_type: { content_type: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'] }
 
