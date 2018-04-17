@@ -26,5 +26,3 @@ config/secrets.yml.key
 
 # Image
 public/system
-
-/config/s3.yml
