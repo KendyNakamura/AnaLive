@@ -68,6 +68,9 @@ ja:
       about_x_hours:
         one:   "約1時間前"
         other: "約%{count}時間前"
+      x_days:
+        one: "1日前"
+        other: "%{count}日前"
   errors:
     messages:
       already_confirmed: 'は既に登録済みです。ログインしてください。'
