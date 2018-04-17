@@ -24,6 +24,7 @@
           <h3>投稿一覧</h3>
           <%= render partial: "post", collection: @posts %>
           <%= paginate @posts %>
+          <!-- <%= link_to_next_page @posts, 'more', :remote => true, id: 'more_link' %> -->
         </div>
         <div class="d-none d-md-block col-lg-4 offset-lg-1">
           <h3>ユーザ一覧</h3>

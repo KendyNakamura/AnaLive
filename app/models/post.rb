@@ -18,7 +18,7 @@ class Post < ApplicationRecord
   # validates :movie_id, format: { with: /https:\/\/www.youtube.com\/watch\?v=*/}
 
   # posts per page
-  paginates_per 10
+  paginates_per 5
 
   def movie_url
     if movie_id.match(%r{/watch\?v=}).present?
