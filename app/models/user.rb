@@ -45,8 +45,6 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable
 
   has_attached_file :avatar,
-                    storage: :s3,
-                    s3_credentials: "#{Rails.root}/config/s3.yml",
                     path: ':attachment/:id/:style.:extension',
                     styles: { medium: '300x300!', thumb: '100x100!>' },
                     default_url: '/english.jpg'
