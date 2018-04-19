@@ -2,16 +2,13 @@
   <div class="col-3 px-2">
     <%= image_tag post.user.avatar.url, class: "border rounded-circle w-100" %>
   </div>
-  <div class="col-9 px-3 py-3 ">
+  <div class="col-9 px-3 py-3 row">
     <p class="my-1">
-      <h4 class="text-primary"><%= "#{post.user.name}" %></h4>
-      <span class="text-secondary float-right"><%= time_ago_in_words(post.created_at) %></span>
+      <h4 class="text-primary col-8"><%= "#{post.user.name}" %></h4>
+      <span class="text-secondary text-right col-4"><%= time_ago_in_words(post.created_at) %></span>
     </p>
     <%= post.body %>
   </div>
 
 </div>
-<% if post.movie_id.present? %>
-  <!-- movieヘルパーを使用 -->
-  <%= movie(movie_id: post.movie_url) %>
-<% end %>
+<%= movie(movie_id: post.movie_url) %>
