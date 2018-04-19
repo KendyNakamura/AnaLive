@@ -12,7 +12,6 @@
 
 class Post < ApplicationRecord
   belongs_to :user, inverse_of: :posts
-  has_many :comments, inverse_of: :post
   validates :movie_id, presence: true
   # validates :movie_id, format: { with: /https:\/\/youtu.be\/*/}
   # validates :movie_id, format: { with: /https:\/\/www.youtube.com\/watch\?v=*/}

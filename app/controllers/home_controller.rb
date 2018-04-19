@@ -4,6 +4,8 @@ class HomeController < ApplicationController
     @user = current_user
     @posts = Post.order('created_at desc').page(params[:page])
     @post = Post.new
+    @comments = Comment.order('created_at desc')
+    @comment = Comment.new
   end
 
   def users

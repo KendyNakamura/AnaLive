@@ -4,11 +4,48 @@
   </div>
   <div class="col-9 px-3 py-3 row">
     <p class="my-1">
-      <h4 class="text-primary col-8"><%= "#{post.user.name}" %></h4>
-      <span class="text-secondary text-right col-4"><%= time_ago_in_words(post.created_at) %></span>
+      <h4 class="text-primary col-7"><%= "#{post.user.name}" %></h4>
+      <span class="text-secondary text-right col-5"><%= time_ago_in_words(post.created_at) %></span>
     </p>
-    <%= post.body %>
+    <%= "#{post.body}" %>
   </div>
-
 </div>
 <%= movie(movie_id: post.movie_url) %>
+
+<%= form_for @comment do |f| %>
+  <div class="input-group pb-2 mx-0">
+    <%= f.text_field :body, class: "form-control mr-3" %>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <span class="input-group-btn align-bottom">
+      <%= f.submit class: "btn btn-primary", value: "コメント" %>
+    </span>
+  </div>
+<% end %>
+
+<% @com = Comment.find_by(post_id: post.id) %>
+<% if @com.present? %>
+<p>コメント</p>
+<div style="max-height:150px;overflow:auto;" class="border border-success mb-2">
+<% comments.each do |comment| %>
+  <% if comment.post_id == post.id %>
+    <div class="row py-3">
+      <div class="col-3 dropdown-item">
+        <%= image_tag comment.user.avatar.url, class: "rounded-circle w-100" %>
+      </div>
+      <div class="col-9">
+        <div class="row">
+          <div class="col-7">
+        <h5 class="text-primary"><%= comment.user.name %></h5>
+      </div>
+      <div class="col-5 text-secondary text-right pr-4" style="font-size:12px;">
+        <%= time_ago_in_words(post.created_at) %>
+      </div>
+      </div>
+        <%= comment.body %> <br />
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<% end %>
