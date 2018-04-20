@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :delete_params, only: [:destroy]
 
   # GET /resource/sign_up
   # def new
@@ -26,10 +27,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   def destroy
-    @delete_user = User.find_by(id: current_user.id)
-    @delete_post = Post.where(user_id: current_user.id)
-    @delete_comment = Comment.where(user_id: current_user.id)
-    if @delete_user.destroy && @delete_post.delete_all && @delete_comment.delete_all
+    if @delete_user.destroy \
+      && @delete_post.delete_all \
+      && @delete_comment.delete_all \
+      && @delete_following.delete_all \
+      && @delete_followed.delete_all
       flash[:notice] = '退会しました'
       redirect_to new_user_session_path
     else
@@ -77,5 +79,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_inactive_sign_up_path_for
     new_user_session_path
+  end
+
+  def delete_params
+    @delete_user = User.find_by(id: current_user.id)
+    @delete_post = Post.where(user_id: current_user.id)
+    @delete_following = Follow.where(following_id: current_user.id)
+    @delete_followed = Follow.where(followed_id: current_user.id)
+    @delete_comment = Comment.where(user_id: current_user.id)
   end
 end

@@ -1,62 +1,61 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
-
-#base
+# base
 gem 'rails', '~> 5.1.6'
-#database
+# database
 gem 'mysql2', '>= 0.3.18', '< 0.6.0'
-#server
+# server
 gem 'puma', '~> 3.7'
 
-#view
+# view
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'therubyracer', platforms: :ruby
-gem 'jbuilder', '~> 2.5'
 gem 'bootstrap'
+gem 'jbuilder', '~> 2.5'
+gem 'therubyracer', platforms: :ruby
+gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
 
 gem 'devise'
 gem 'sidekiq'
-gem 'sinatra'
-gem 'redis'
-gem 'paperclip'
-gem 'kaminari'
 gem 'activeadmin'
+gem 'kaminari'
+gem 'paperclip'
+gem 'redis'
+gem 'sinatra'
 gem 'aws-sdk', '~> 2.3'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'byebug', platforms: %I[mri mingw x64_mingw]
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
   gem 'faker'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
+  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'binding_of_caller'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'rubocop'
   gem 'annotate'
-  gem 'overcommit'
+  gem 'rubocop'
   gem 'capistrano'
-  gem 'capistrano-rbenv'
+  gem 'overcommit'
   gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
   gem 'capistrano-rails'
-  gem 'capistrano3-puma'
   gem 'capistrano-nginx'
+  gem 'capistrano3-puma'
   gem 'capistrano-sidekiq'
 end

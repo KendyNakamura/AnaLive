@@ -1,11 +1,29 @@
-<div class="border border-left-0 border-right-0 border-bottom-0 py-3 row">
-  <div class="col-5 px-3 py-3">
-    <%= image_tag users.avatar.url, class: "border rounded-circle w-100" %>
+<% unless users.id == current_user.id %>
+  <div class="border border-left-0 border-right-0 border-bottom-0 py-3 row">
+    <div class="col-5 px-3 py-3">
+      <%= image_tag users.avatar.url, class: "border rounded-circle w-100" %>
+    </div>
+    <div class="col-7 px-3 py-3 ">
+      <p class="my-1">
+        <strong><%= "#{users.name}" %></strong>
+      </p>
+      <!-- followを作成しておく -->
+      <% @follow = Follow.new unless @follow %>
+        <!-- 自分がフォローしたユーザを表示 -->
+      <% if Follow.find_by(following_id: current_user.id, followed_id: users.id)%>
+        <%= form_for @follow, :url => {:controller => :follows, :action => 'destroy'}, html: {method: "post"} do |f| %>
+          <p><%= f.hidden_field :followed_id, value: users.id %></p>
+          <p><%= f.hidden_field :following_id, value: current_user.id %></p>
+          <p><%= f.submit "フォロー済み", :class => "btn btn-secondary btn-profile after-follow" %></p>
+        <% end %>
+      <% else %>
+        <%= form_for @follow, :url => {:controller => :follows, :action => 'create'}, html: {method: "post"} do |f| %>
+          <p><%= f.hidden_field :followed_id, value: users.id %></p>
+          <p><%= f.hidden_field :following_id, value: current_user.id %></p>
+          <p><%= f.submit "フォローする", :class => "btn btn-primary btn-profile after-follow" %></p>
+        <% end %>
+      <% end %>
+    </div>
+    <%= "#{users.content}".truncate(40)%>
   </div>
-  <div class="col-7 px-3 py-3 ">
-    <p class="my-1">
-      <strong><%= "#{users.name}" %></strong>
-    </p>
-  </div>
-  <%= "#{users.content}".truncate(40)%>
-</div>
+<% end %>

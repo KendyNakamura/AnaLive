@@ -1,11 +1,11 @@
 class HomeController < ApplicationController
-  before_action :users_params, only: [:index, :users]
-  before_action :post_params, only: [:show, :destroy]
-  before_action :posts_params, only: [:show]
-  before_action :comment_params, only: [:index, :show]
+  before_action :post_params, only: %I[show destroy]
+  before_action :posts_params, only: %I[show]
+  before_action :comment_params, only: %I[index show]
 
   def index
     @user = current_user
+    @users = User.all
     @post = Post.new
     @posts = Post.order('created_at desc').page(params[:page])
   end
@@ -30,10 +30,6 @@ class HomeController < ApplicationController
   end
 
   private
-
-  def users_params
-    @users = User.all
-  end
 
   def posts_params
     @posts = Post.order('created_at desc')

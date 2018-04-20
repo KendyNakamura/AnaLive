@@ -26,8 +26,22 @@
           <%= paginate @posts %>
         </div>
         <div class="d-none d-md-block col-lg-4 offset-lg-1">
-          <h3>ユーザ一覧</h3>
-          <%= render partial: "users", collection: @users %>
+          <h3>フォロー済みユーザ</h3>
+          <% @users.each do |user| %>
+            <% if Follow.find_by(following_id: current_user.id, followed_id: user.id)%>
+              <div class="border border-left-0 border-right-0 border-bottom-0 py-3 row">
+                <div class="col-5 px-3 py-3">
+                  <%= image_tag user.avatar.url, class: "border rounded-circle w-100" %>
+                </div>
+                <div class="col-7 px-3 py-3 ">
+                  <p class="my-1">
+                    <strong><%= link_to "#{user.name}", "/home/#{user.id}" %></strong>
+                  </p>
+                </div>
+                <%= "#{user.content}".truncate(40)%>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
   </div>

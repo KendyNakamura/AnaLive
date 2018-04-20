@@ -9,9 +9,13 @@ Rails.application.routes.draw do
   resources :posts, only: [:create]
   # comment
   resources :comments, only: [:create]
+  # follows
+  post '/follows/create' => 'follows#create'
+  post '/follows/destroy' => 'follows#destroy'
   # devise
   devise_for :users, controllers: { registrations: 'users/registrations',
-    sessions: 'users/sessions', confirmations: 'users/confirmations'
+                                    sessions: 'users/sessions',
+                                    confirmations: 'users/confirmations'
     }
   devise_scope :user do
     get 'users/sign_out' => 'devise/sessions#destroy'
