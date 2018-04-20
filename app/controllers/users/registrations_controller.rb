@@ -25,9 +25,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    @delete_user = User.find_by(id: current_user.id)
+    @delete_post = Post.where(user_id: current_user.id)
+    @delete_comment = Comment.where(user_id: current_user.id)
+    if @delete_user.destroy && @delete_post.delete_all && @delete_comment.delete_all
+      flash[:notice] = '退会しました'
+      redirect_to new_user_session_path
+    else
+      flash[:notice] = '退会に失敗しました。'
+      render 'users/edit'
+    end
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -62,5 +71,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def update_resource(resource, params)
     resource.update_without_password(params)
+  end
+
+  protected
+
+  def after_inactive_sign_up_path_for
+    new_user_session_path
   end
 end

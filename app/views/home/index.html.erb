@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-lg-7">
           <h3>投稿一覧</h3>
-          <%= render partial: "post", collection: @posts, locals: {comments: @comments, comment: @comment}%>
+          <%= render partial: "post", collection: @posts, locals: {comments: @comments, comment: @comment} %>
           <%= paginate @posts %>
         </div>
         <div class="d-none d-md-block col-lg-4 offset-lg-1">
