@@ -11,9 +11,48 @@
 // about supported directives.
 //
 //= require jquery3
-//= require jquery_ujs
 //= require popper
 //= require bootstrap
 //= require tether
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
+//= require infinite-scroll.pkgd.min
 //= require_tree .
+
+// path=new Array();
+
+// $(function(){
+//   $('#posts').infiniteScroll({
+//     loading: {
+//       img:     "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif",
+//       msgText: "loading..."
+//     },
+//     path: 'nav.pagination a[rel=next]',
+//     navSelector: "nav.pagination",
+//     nextSelector: "nav.pagination a[rel=next]",
+//     itemSelector: "#posts div.posts" /* このDOMに差し掛かった時に、次のページのロードが始まる*/
+//   });
+// });
+
+$(function() {
+    //クリックしたときのファンクションをまとめて指定
+    $('.tab li').click(function() {
+        //.index()を使いクリックされたタブが何番目かを調べ、
+        //indexという変数に代入します。
+        var index = $('.tab li').index(this);
+        //コンテンツを一度すべて非表示にし、
+        $('.content > div').css('display','none');
+        //クリックされたタブと同じ順番のコンテンツを表示します。
+        $('.content > div').eq(index).css('display','block');
+        //一度タブについているクラスselectを消し、
+        $('.tab li').removeClass('select');
+        //クリックされたタブのみにクラスselectをつけます。
+        $(this).addClass('select')
+    });
+});
+
+
+$(function(){
+  $('#toukou').css('color', 'red');
+});

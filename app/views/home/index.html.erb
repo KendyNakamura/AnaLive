@@ -22,8 +22,20 @@
       <div class="row">
         <div class="col-lg-7">
           <h3>投稿一覧</h3>
-          <%= render partial: "post", collection: @posts, locals: {comments: @comments, comment: @comment} %>
-          <%= paginate @posts %>
+          <ul class="tab">
+            <li class="select">Follow</li>
+            <li>All</li>
+          </ul>
+          <div id="posts" class="content">
+            <div>
+              <%= render partial: "post", collection: @posts, locals: {comments: @comments, comment: @comment} %>
+              <%= paginate @posts %>
+            </div>
+            <div class="hide">
+              <%= render partial: "post_all", collection: @posts, locals: {comments: @comments, comment: @comment} %>
+              <%= paginate @posts %>
+            </div>
+          </div>
         </div>
         <div class="d-none d-md-block col-lg-4 offset-lg-1">
           <h3>フォロー済みユーザ</h3>

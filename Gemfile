@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'popper_js'
 gem 'tether-rails'
+gem 'jquery-turbolinks'
 
 gem 'devise'
 gem 'sidekiq'
