@@ -16,6 +16,7 @@ ul{
 .tab{
   overflow:hidden;
   padding-left: 0;
+  cursor: pointer;
 }
 .tab li{
   background:#ccc;
@@ -25,10 +26,10 @@ ul{
   text-align: center;
 }
 .tab li.select{
-  background:#eee;
+  background:#00FF00;
 }
 .content{
-  background:#eee;
+  // background:#eee;
   padding:20px;
 }
 .hide {

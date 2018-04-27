@@ -21,14 +21,13 @@
 //= require_tree .
 
 // path=new Array();
-
 // $(function(){
 //   $('#posts').infiniteScroll({
 //     loading: {
 //       img:     "http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif",
 //       msgText: "loading..."
 //     },
-//     path: 'nav.pagination a[rel=next]',
+//     // path: 'nav.pagination a[rel=next]',
 //     navSelector: "nav.pagination",
 //     nextSelector: "nav.pagination a[rel=next]",
 //     itemSelector: "#posts div.posts" /* このDOMに差し掛かった時に、次のページのロードが始まる*/
@@ -50,9 +49,4 @@ $(function() {
         //クリックされたタブのみにクラスselectをつけます。
         $(this).addClass('select')
     });
-});
-
-
-$(function(){
-  $('#toukou').css('color', 'red');
 });
